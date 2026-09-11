@@ -2,15 +2,15 @@
 
 **New-old system global watch** is an interactive web application developed with Python and Streamlit that implements a new timekeeping system based on geographic longitude.
 
-Instead of using conventional 24 time zones, this system divides the Earth into 1,440 meridians, spaced 0.25° of longitude apart, so that each meridian represents a difference of one minute. It is a more precise system according to sun hours in each place, as it was stablished before the current time standard. Due to the difficulties of coordination between different cities, that time standard was changed. This project has no intention on applying this system, recognizing the benefits of the current one, it's just a fun-to project. 
+Instead of using the conventional 24 time zones, this system divides the Earth into 1,440 meridians, spaced 0.25° of longitude apart, so that each meridian represents a one-minute difference in solar time. This provides a more geographically continuous representation of solar time, which was historically determined locally before the adoption of standardized time zones. As coordinating different local times became increasingly difficult, standardized time zones were introduced. This project does not intend to replace the current time standard, whose practical benefits are recognized; it is simply an experimental and educational project.
 
 The application allows users to select a point directly on a map or search for a municipality to determine the time corresponding to that location according to this new time system.
 
-## 🕐 How does it work?
+## How does it work?
 
-The system uses the 180° meridian as its reference meridian. It keeps the same as the current time standard, so it's still the International Date Line. This meridian will still be the barrier with one day apart from each side.
+The system uses the 180° meridian as its reference meridian. In this proposed system, the 180° meridian also acts as the boundary between two consecutive calendar days. Therefore, locations on opposite sides of this meridian may have different dates, even when their geographical distance is very small.
 
-Due to wide extensions of land sharing the same time zone, as it happens in a big part of Europe or big countries like China, sunrises and sunsets can be separated by several hours in places which share the same time zone. Looking for a way to "fix" this, I thought of getting more time zones, one for each minute of the day. As there are 60 minutes in an hour and 24 hours in a day, 60 * 24 = 1440 time zones. Separating the globe in 1440 parts is as easy as dividing 360° between 1440, what gives us earth portions of 0.25°
+Due to large areas of land sharing the same time zone, as is the case across much of Europe or big countries like China, sunrise and sunset can occur at very different times in places that share the same time zone. Looking for a way to "fix" this, I explored the idea of having one time zone for each minute of the day. As there are 60 minutes in an hour and 24 hours in a day, 60 * 24 = 1440 time zones. Dividing the Earth's 360° of longitude into 1,440 equal sections gives us intervals of 0.25°.
 
 Given the longitude of a specific location, the difference in minutes from the reference meridian is calculated as follows:
 
@@ -28,7 +28,7 @@ For example, for a location at the Greenwich meridian, wich is at 0° longitude:
 
 Therefore, its time will be 720 minutes (12 hours) earlier than the time at the 180° meridian
 
-## 🗺️ Features
+## Features
 
 The application allows users to:
 
@@ -38,7 +38,7 @@ The application allows users to:
 * Automatically move the map to the selected municipality.
 * Display the calculated time and date for the selected location.
 
-## 🛠️ Technologies
+## Technologies
 
 The project is developed using:
 
@@ -50,18 +50,18 @@ The project is developed using:
 * **Nominatim / OpenStreetMap** — for geocoding municipalities.
 * **datetime / zoneinfo** — for handling dates, times, and time zones.
 
-## 🚀 Installation
+## Installation
 
 Clone this repository:
 
 ```bash
-ivange00/new_old_system_global_watch
+git clone https://github.com/ivange00/new_old_system_global_watch.git
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd REPOSITORY-NAME
+cd new_old_system_global_watch
 ```
 
 Install the required dependencies:
@@ -70,17 +70,17 @@ Install the required dependencies:
 pip install -r requirements.txt
 ```
 
-## ▶️ Running the application
+## Running the application
 
 Start the application with:
 
 ```bash
-streamlit run app.py
+streamlit run global_watch_app.py
 ```
 
-Or use it online in AQUÍ PONER LA WEB CUANDO ESTÉ
+Or use it online in [(https://newoldsystemglobalwatch.streamlit.app/)]
 
-## 📖 Usage
+## Usage
 
 Once the application is open, there are two main ways to calculate the time.
 
@@ -103,7 +103,7 @@ The application will:
 5. Calculate the corresponding time.
 6. Display the calculated time.
 
-## 🧮 Mathematical model
+## Mathematical model
 
 The main calculation used by the application is:
 
@@ -119,8 +119,8 @@ local_time = time_at_180 - timedelta(minutes=minutes_difference)
 
 This approach directly converts geographic longitude into a time difference without requiring the 1,440 meridians to be stored in an array.
 
-## 📄 License
+## License
 
-This project is currently developed for **educational and experimental purposes**.
+This project is currently developed for educational and experimental purposes.
 
-The project license is MIT.
+The project is licensed under the MIT License
