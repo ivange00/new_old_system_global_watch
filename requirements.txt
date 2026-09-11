@@ -1,6 +1,4 @@
-datetime
-zoneinfo
-geopy.geocoders
 streamlit
 folium
 streamlit_folium
+geopy
