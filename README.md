@@ -78,7 +78,7 @@ Start the application with:
 streamlit run global_watch_app.py
 ```
 
-Or use it online in [(https://newoldsystemglobalwatch.streamlit.app/)]
+Or use it online in https://newoldsystemglobalwatch.streamlit.app/
 
 ## Usage
 
